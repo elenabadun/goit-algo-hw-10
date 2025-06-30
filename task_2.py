@@ -13,6 +13,12 @@ def f(x):
     return x**2
 
 
+# Обчислення інтеграла
+result, error = spi.quad(f, a, b)
+
+print("Інтеграл: ", result, error)
+
+
 def visualize_results(x_random, y_random):
     # Створення діапазону значень для x:
     x = np.linspace(-0.5, 2.5, 400)
@@ -60,9 +66,9 @@ def monte_carlo(a, b, num_samples):
     result, error = spi.quad(f, a, b)
 
     print(
-        "Площа обчислена методом Монте-Карло",
+        "Площа обчислена методом Монте-Карло:",
         area_under_curve,
-        "Площа обчислена функцією quad",
+        "Площа обчислена функцією quad:",
         result,
     )
     visualize_results(x_random, y_random)
@@ -72,3 +78,9 @@ if __name__ == "__main__":
     for density in [100, 1000, 10000, 100000]:
         print(f"\n\tResults for points amount: {density}")
         monte_carlo(a, b, density)
+
+
+"""
+Зі збільшенням кількості випадкових точок результат роботи методу Монте-Карло стає точнішим і наближенішим до 
+результатів, які дає функція quad. Це підтверджує правильність розрахунків і те, що метод працює коректно.
+"""
